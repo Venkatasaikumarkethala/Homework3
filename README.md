@@ -1,8 +1,8 @@
-# 📌 Intermediate Calculator - Level 2 (Part 2)
+# 📌 Advanced Calculator - Level 3 (Part 3)
 
-This is the **Level 2 Intermediate Calculator** implementation for the assignment.  
-It introduces **Object-Oriented Programming (OOP)** principles by encapsulating  
-calculations inside a **`Calculation` class** and using **static methods** in the `Calculator` class.
+This is the **Level 3 Advanced Calculator** implementation for the assignment.  
+It introduces **calculation history management** using the `Calculations` class  
+and further improves **OOP principles, testing, and code coverage**.
 
 ---
 
@@ -10,9 +10,10 @@ calculations inside a **`Calculation` class** and using **static methods** in th
 
 ✔️ **Encapsulation** of arithmetic operations using the `Calculation` class  
 ✔️ **Static method** usage in the `Calculator` class  
+✔️ **Class method** usage in the `Calculations` class for managing history  
+✔️ **Calculation history storage and retrieval**  
 ✔️ **Exception handling** for division by zero  
-✔️ **Modular code structure** (Separation of Concerns)  
-✔️ **Unit tests using `pytest`**  
+✔️ **Unit tests using `pytest`** (95%+ coverage)  
 ✔️ **Code quality checked with `pylint`**  
 
 ---
@@ -23,11 +24,12 @@ calculations inside a **`Calculation` class** and using **static methods** in th
 calculator_project/
 │── calculator/
 │   │── __init__.py
-│   │── calculator.py   # Performs operations using Calculation class
+│   │── calculator.py   # Uses Calculations class to store history
 │   │── calculation.py  # Encapsulates a single calculation
+│   │── calculations.py # Stores history of calculations
 │   │── operations.py   # Defines basic arithmetic operations
 │── tests/
-│   │── test_calculator.py   # Unit tests for Calculator and Calculation classes
+│   │── test_calculator.py   # Unit tests for Calculator and Calculations
 │── requirements.txt
 │── .pylintrc
 │── README.md
@@ -77,6 +79,16 @@ print(Calculator.perform_operation(5, 3, add))       # Output: 8
 print(Calculator.perform_operation(10, 4, subtract)) # Output: 6
 print(Calculator.perform_operation(6, 7, multiply))  # Output: 42
 print(Calculator.perform_operation(15, 3, divide))   # Output: 5.0
+
+# Retrieve calculation history
+print(Calculator.get_history())
+
+# Get the latest calculation result
+latest_calc = Calculator.get_latest_calculation()
+print(latest_calc.get_result())
+
+# Clear the history
+Calculator.clear_history()
 ```
 
 ---
@@ -91,7 +103,8 @@ pytest --cov=calculator tests/
 
 ✔️ Expected Output:
 ```
-========================== 5 passed in 0.06s ==========================
+TOTAL                           57      3    95%
+========================== 9 passed in 0.06s ==========================
 ```
 
 ### Run Pylint for Code Quality Check
@@ -110,18 +123,22 @@ pylint calculator/
 - Encapsulates a **single arithmetic operation**.
 - Stores **two operands**, the **operation**, and the **result**.
 
+### **`Calculations` Class**
+- Uses **class methods** to **store and retrieve past calculations**.
+- Implements **methods for retrieving history, clearing history, and getting the latest calculation**.
+
 ### **`Calculator` Class**
 - Uses **static methods** to perform operations.
-- Calls the `Calculation` class to store and retrieve results.
+- Calls the `Calculations` class to store and retrieve past results.
 
 ### **`operations.py`**
 - Defines **basic arithmetic functions** (`add`, `subtract`, `multiply`, `divide`).
 
 ---
 
-## 🏁 Next Steps - Level 3 (Part 3)
-- Implement **calculation history** using a `Calculations` class.
-- Store past calculations and retrieve them.
-- Use **class methods** for history management.
-- Improve **unit testing** with **parameterized test data**.
+## 🏁 Final Steps
+- ✅ Ensure **all tests pass** (pytest).  
+- ✅ Ensure **95%+ test coverage** (pytest-cov).  
+- ✅ Ensure **Pylint score 7+/10** (pylint calculator/).  
+- ✅ **Submit your GitHub repository link** for grading.
 
