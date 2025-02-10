@@ -1,21 +1,25 @@
 """
-Calculator module for basic arithmetic operations.
+Calculator module using OOP principles.
 """
 
-def add(a: float, b: float) -> float:
-    """Returns the sum of two numbers."""
-    return a + b
+from calculator.calculation import Calculation
+from calculator.operations import add, subtract, multiply, divide 
 
-def subtract(a: float, b: float) -> float:
-    """Returns the difference between two numbers."""
-    return a - b
+class Calculator:
+    """Performs arithmetic calculations using Calculation instances."""
 
-def multiply(a: float, b: float) -> float:
-    """Returns the product of two numbers."""
-    return a * b
+    @staticmethod
+    def perform_operation(number1: float, number2: float, operation):
+        """
+        Performs a calculation and returns the result.
+        
+        Args:
+            number1 (float): First number.
+            number2 (float): Second number.
+            operation (function): The arithmetic operation.
 
-def divide(a: float, b: float) -> float:
-    """Returns the quotient of two numbers. Raises ValueError if dividing by zero."""
-    if b == 0:
-        raise ValueError("Cannot divide by zero!")
-    return a / b
+        Returns:
+            float: The result of the operation.
+        """
+        calculation = Calculation(number1, number2, operation)
+        return calculation.get_result()
