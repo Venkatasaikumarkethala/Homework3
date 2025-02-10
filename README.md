@@ -1,20 +1,19 @@
-Hello this is my Homework 3
+# 📌 Intermediate Calculator - Level 2 (Part 2)
 
-.# 📌 Basic Calculator - Level 1
-
-This is the **Level 1 Basic Calculator** implementation for the assignment. It includes **four basic arithmetic operations**: **Addition, Subtraction, Multiplication, and Division**, along with **unit tests** to verify correctness.
+This is the **Level 2 Intermediate Calculator** implementation for the assignment.  
+It introduces **Object-Oriented Programming (OOP)** principles by encapsulating  
+calculations inside a **`Calculation` class** and using **static methods** in the `Calculator` class.
 
 ---
 
 ## 📜 Features
 
-✔️ Perform **Addition (+)**  
-✔️ Perform **Subtraction (-)**  
-✔️ Perform **Multiplication (×)**  
-✔️ Perform **Division (÷) with Exception Handling** (division by zero raises an error)  
-✔️ Unit tests using **pytest**  
-✔️ Code style checked with **pylint**  
-✔️ Project structure follows **Separation of Concerns**  
+✔️ **Encapsulation** of arithmetic operations using the `Calculation` class  
+✔️ **Static method** usage in the `Calculator` class  
+✔️ **Exception handling** for division by zero  
+✔️ **Modular code structure** (Separation of Concerns)  
+✔️ **Unit tests using `pytest`**  
+✔️ **Code quality checked with `pylint`**  
 
 ---
 
@@ -24,9 +23,11 @@ This is the **Level 1 Basic Calculator** implementation for the assignment. It i
 calculator_project/
 │── calculator/
 │   │── __init__.py
-│   │── calculator.py   # Basic arithmetic operations
+│   │── calculator.py   # Performs operations using Calculation class
+│   │── calculation.py  # Encapsulates a single calculation
+│   │── operations.py   # Defines basic arithmetic operations
 │── tests/
-│   │── test_calculator.py   # Unit tests
+│   │── test_calculator.py   # Unit tests for Calculator and Calculation classes
 │── requirements.txt
 │── .pylintrc
 │── README.md
@@ -38,12 +39,10 @@ calculator_project/
 
 ## ⚙️ Installation & Setup
 
-Follow these steps to set up the project on your local machine:
-
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/Venkatasaikumarkethala/Homework3.git
+git clone https://github.com/yourusername/calculator_project.git
 cd calculator_project
 ```
 
@@ -63,19 +62,21 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 How to Run the Calculator
+## 🚀 How to Use the Calculator
 
 ### Using Python
 
-You can directly import the calculator module and use it in Python:
+Import the calculator module and perform operations:
 
 ```python
-from calculator.calculator import add, subtract, multiply, divide
+from calculator.calculator import Calculator
+from calculator.operations import add, subtract, multiply, divide
 
-print(add(5, 3))          # Output: 8
-print(subtract(10, 4))    # Output: 6
-print(multiply(6, 7))     # Output: 42
-print(divide(15, 3))      # Output: 5.0
+# Perform operations using static method
+print(Calculator.perform_operation(5, 3, add))       # Output: 8
+print(Calculator.perform_operation(10, 4, subtract)) # Output: 6
+print(Calculator.perform_operation(6, 7, multiply))  # Output: 42
+print(Calculator.perform_operation(15, 3, divide))   # Output: 5.0
 ```
 
 ---
@@ -85,11 +86,10 @@ print(divide(15, 3))      # Output: 5.0
 ### Run Pytest
 
 ```bash
-pytest tests/
+pytest --cov=calculator tests/
 ```
 
-✔️ If all tests pass, you’ll see an output like:
-
+✔️ Expected Output:
 ```
 ========================== 5 passed in 0.06s ==========================
 ```
@@ -100,14 +100,28 @@ pytest tests/
 pylint calculator/
 ```
 
+✔️ Expected **Pylint Score: 7+/10**  
+
 ---
 
 ## 📜 Code Explanation
 
-### Basic Arithmetic Functions
+### **`Calculation` Class**
+- Encapsulates a **single arithmetic operation**.
+- Stores **two operands**, the **operation**, and the **result**.
 
-- **`add(a, b)`:** Returns the sum of `a` and `b`.
-- **`subtract(a, b)`:** Returns the difference of `a` and `b`.
-- **`multiply(a, b)`:** Returns the product of `a` and `b`.
-- **`divide(a, b)`:** Returns the quotient of `a` and `b`. Raises `ValueError` if `b == 0`.
+### **`Calculator` Class**
+- Uses **static methods** to perform operations.
+- Calls the `Calculation` class to store and retrieve results.
+
+### **`operations.py`**
+- Defines **basic arithmetic functions** (`add`, `subtract`, `multiply`, `divide`).
+
+---
+
+## 🏁 Next Steps - Level 3 (Part 3)
+- Implement **calculation history** using a `Calculations` class.
+- Store past calculations and retrieve them.
+- Use **class methods** for history management.
+- Improve **unit testing** with **parameterized test data**.
 
