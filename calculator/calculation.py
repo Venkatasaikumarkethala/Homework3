@@ -1,5 +1,5 @@
 """
-Module for the Calculation class, which represents a single arithmetic operation.
+Module containing the Calculation class for arithmetic operations.
 """
 
 from typing import Callable
